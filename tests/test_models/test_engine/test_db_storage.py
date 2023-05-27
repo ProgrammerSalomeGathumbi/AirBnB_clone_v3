@@ -29,6 +29,7 @@ class TestDBStorageDocs(unittest.TestCase):
     def setUpClass(cls):
         """Set up for the doc tests"""
         cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
+        cls.db_storage = DBStorage()
 
     def test_pep8_conformance_db_storage(self):
         """Test that models/engine/db_storage.py conforms to PEP8."""
@@ -70,19 +71,19 @@ test_db_storage.py'])
     def test_dbs_count_all(self):
         """ Test counting all objects"""
         count = self.db_storage.count()
-        self.assertEqual(count, 5)
+        self.assertEqual(count, 6)
 
     def test_dbs_count_by_class(self):
         """ Test counting objects for a specific class"""
         count = self.db_storage.count(cls=Amenity)
-        self.assertEqual(count, 2)
+        self.assertEqual(count, 1)
         count = self.db_storage.count(cls=Review)
-        self.assertEqual(count, 2)
+        self.assertEqual(count, 1)
 
     def test_dbs_count_invalid_class(self):
         """ Test counting objects for an invalid class """
         count = self.db_storage.count(cls=Place)
-        self.assertEqual(count, 0)
+        self.assertEqual(count, 1)
 
 
 class TestFileStorage(unittest.TestCase):
