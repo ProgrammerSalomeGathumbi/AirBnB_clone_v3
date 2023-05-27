@@ -67,6 +67,23 @@ test_file_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+    def test_fs_count_all(self):
+        """ Test counting all objects"""
+        count = self.db_storage.count()
+        self.assertEqual(count, 5)
+
+    def test_fs_count_by_class(self):
+        """ Test counting objects for a specific class"""
+        count = self.db_storage.count(cls=Amenity)
+        self.assertEqual(count, 2)
+        count = self.db_storage.count(cls=Review)
+        self.assertEqual(count, 2)
+
+    def test_fs_count_invalid_class(self):
+        """ Test counting objects for an invalid class """
+        count = self.db_storage.count(cls=Place)
+        self.assertEqual(count, 0)
+
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
