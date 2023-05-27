@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-python script to start api
-"""
+"""This python script is the first part
+of the Restful api project."""
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
@@ -12,8 +11,8 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 
 
-@app.teardown_app.context
-def api_teardown():
+@app.teardown_appcontext
+def api_teardown(exc):
     """calls storage.close """
     storage.close()
 
