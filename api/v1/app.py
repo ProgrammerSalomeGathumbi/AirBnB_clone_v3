@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This python script is the first part
 of the Restful api project."""
-from flask import Flask
+from flask import Flask, jsonify
+from werkzeug.exceptions import NotFound
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -9,6 +10,12 @@ from os import getenv
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+
+
+@app.errorhandler(404)
+def api_notfound(err):
+    """ returns a JSON-formatted 404 status response"""
+    return jsonify({"error": "Not found"}), 404
 
 
 @app.teardown_appcontext
