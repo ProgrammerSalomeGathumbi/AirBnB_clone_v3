@@ -22,7 +22,7 @@ def get_all_amenities():
                  strict_slashes=False)
 def get_amenity(amenity_id):
     """Retrieves a Amenity object """
-    Amenity = storage.get(Amenity, amenity_id)
+    amenity = storage.get(Amenity, amenity_id)
     if not amenity:
         abort(404)
     return jsonify(amenity.to_dict())
