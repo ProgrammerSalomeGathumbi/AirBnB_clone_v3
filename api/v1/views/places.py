@@ -73,7 +73,7 @@ def update_place(place_id):
     rjson = request.get_json()
     if not rjson:
         abort(400, "Not a JSON")
-    ignore = ["id", "user_id", "city_id" "created_at", "updated_at"]
+    ignore = ["id", "user_id", "city_id", "created_at", "updated_at"]
     for key, value in rjson.items():
         if key not in ignore:
             setattr(place, key, value)
