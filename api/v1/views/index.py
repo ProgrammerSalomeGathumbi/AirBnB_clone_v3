@@ -29,6 +29,4 @@ def api_stats():
                   "reviews": storage.count(Review),
                   "states": storage.count(State),
                   "users": storage.count(User)}
-    formatted_stat = json.dumps(stats_dict, indent=2,
-                                separators=(", ", ": "))
-    return formatted_stat
+    return jsonify(stats_dict)
