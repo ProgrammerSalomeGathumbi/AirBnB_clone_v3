@@ -2,6 +2,7 @@
 """
 State objects that handles all default RESTFul API actions
 """
+from flask import Flask
 from flask import make_response, jsonify, abort, request
 from models import storage
 from models.state import State

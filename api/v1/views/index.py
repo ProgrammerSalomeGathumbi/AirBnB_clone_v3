@@ -9,7 +9,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-from flask import jsonify
+from flask import Flask, jsonify
 from api.v1.views import app_views
 
 
