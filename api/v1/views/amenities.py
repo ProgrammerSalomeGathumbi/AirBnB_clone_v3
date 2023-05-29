@@ -5,13 +5,12 @@ Create a new view for Amenity objects
 from flask import Flask, request, jsonify, abort
 from api.v1.views import app_views
 from models import storage
-from models.amenities import amenities
 
 
 @app_views.route("/amenities", methods=['GET', 'POST'], strict_slashes=False)
 @app_views.route("/amenities/<amenity_id>", methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
-def get_amenities(amenity_id=None):
+def amenities_crud(amenity_id=None):
     """Returns GET, POST, DELETE, PUT methods"""
     data = {
             'str': Amenity,
