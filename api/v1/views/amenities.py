@@ -5,7 +5,7 @@ Create a new view for Amenity objects
 from flask import Flask, request, jsonify, abort
 from api.v1.views import app_views
 from models import storage
-from models.amenities import Amenity
+from models.amenity import Amenity
 
 
 @app_views.route("/amenities", methods=['GET'],  strict_slashes=False)
