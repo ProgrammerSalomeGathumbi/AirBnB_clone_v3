@@ -9,6 +9,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import json
 from flask import Flask, jsonify
 from api.v1.views import app_views
 
@@ -28,4 +29,6 @@ def api_stats():
                   "reviews": storage.count(Review),
                   "states": storage.count(State),
                   "users": storage.count(User)}
-    return jsonify(stats_dict)
+    formatted_stat = json.dumps(stats_dict, indent=2,
+                                separators=(", ", ": "))
+    return formatted_stat
