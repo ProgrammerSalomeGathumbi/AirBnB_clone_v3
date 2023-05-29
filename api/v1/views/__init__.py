@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify, request
 from models.state import State
 from models.amenity import Amenity
 from models.city import City
@@ -17,8 +17,8 @@ def get(data):
             return jsonify([p.to_dict() for p in
                            getattr(parent, data['p_child'])]), 200
         abort(404)
-    if data['_id']:
-        found = storage.get(data['str'], data['_id'])
+    if data['id']:
+        found = storage.get(data['str'], data['id'])
         if found:
             return jsonify(found.to_dict()), 200
         abort(404)
@@ -29,7 +29,7 @@ def get(data):
 
 def delete(data):
     ''' Sends HTTP DELETE request '''
-    found = storage.get(data['str'], data['_id'])
+    found = storage.get(data['str'], data['id'])
     if found:
         storage.delete(found)
         storage.save()
@@ -67,7 +67,7 @@ def put(data):
     req = request.get_json()
     if req is None:
         return jsonify({'error': 'Not a JSON'}), 400
-    found = storage.get(data['str'], data['_id'])
+    found = storage.get(data['str'], data['id'])
     if found:
         for k, v in req.items():
             if k not in data['ignore']:

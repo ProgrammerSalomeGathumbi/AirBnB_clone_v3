@@ -3,7 +3,7 @@
 Create a new view for Amenity objects
 """
 from flask import Flask, request, jsonify, abort
-from api.v1.views import app_views
+from api.v1.views import app_views, get, post, put, delete
 from models import storage
 
 

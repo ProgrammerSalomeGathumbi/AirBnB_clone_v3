@@ -10,9 +10,9 @@ from api.v1.views import app_views, get, delete, post, put
 
 @app_views.route('/cities/<city_id>', strict_slashes=False,
                  methods=['GET', 'DELETE', 'PUT'])
-@app_views.route('states/state_id', strict_slashes=False,
+@app_views.route('states/<state_id>', strict_slashes=False,
                  methods=['GET', 'POST'])
-def city_curd(state_id=None, city_id=None):
+def city_crud(state_id=None, city_id=None):
     """Returns GET, DELETE, PUT, POST methods"""
     data = {
             'str': 'City',
