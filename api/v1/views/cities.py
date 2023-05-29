@@ -56,9 +56,9 @@ def create_city(state_id):
         abort(400, "Not a JSON")
     if "name" not in cjson:
         abort(400, "Missing name")
-    cjson["state_id"] = state_id	
+    cjson["state_id"] = state_id
     city = City(** cjson)
-    storage.new(city)	
+    storage.new(city)
     storage.save()
     return make_response(jsonify(city.to_dict()), 201)
 
