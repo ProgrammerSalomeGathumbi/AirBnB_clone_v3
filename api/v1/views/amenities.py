@@ -5,6 +5,7 @@ Create a new view for Amenity objects
 from flask import Flask, request, jsonify, abort
 from api.v1.views import app_views
 from models import storage
+from models.amenities import Amenity
 
 
 @app_views.route("/amenities", methods=['GET'],  strict_slashes=False)
@@ -54,7 +55,7 @@ def create_amenity():
 
 @app_views.route("/amenities/<amenity_id>", methods=['PUT'],
                  strict_slashes=False)
-def update_state(amenity_id):
+def update_amenity(amenity_id):
     """Updates an Amenity object """
     amenity = storage.get(Amenity, amenity_id)
     if not amenity:
