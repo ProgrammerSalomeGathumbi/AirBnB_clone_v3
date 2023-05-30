@@ -24,7 +24,7 @@ def api_stats():
     """retrieves the number of each objects by type"""
     stats_dict = {"amenities": storage.count(Amenity),
                   "cities": storage.count(City),
-                  "place": storage.count(Place),
+                  "places": storage.count(Place),
                   "reviews": storage.count(Review),
                   "states": storage.count(State),
                   "users": storage.count(User)}
