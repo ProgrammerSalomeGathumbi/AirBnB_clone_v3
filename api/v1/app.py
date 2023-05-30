@@ -14,6 +14,7 @@ app.register_blueprint(app_views)
 app.url_map.strict_slashes = False
 cors = CORS(app, resources={"*": {"origins": "0.0.0.0"}})
 
+
 @app.errorhandler(404)
 def api_notfound(err):
     """ returns a JSON-formatted 404 status response"""
