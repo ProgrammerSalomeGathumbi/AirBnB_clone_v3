@@ -48,7 +48,7 @@ def create_state():
         abort(400, "Not a JSON")
     if "name" not in rjson:
         abort(400, "Missing name")
-    state = State(** rjson)
+    state = State(**rjson)
     storage.save()
     return make_response(jsonify(state.to_dict()), 201)
 
