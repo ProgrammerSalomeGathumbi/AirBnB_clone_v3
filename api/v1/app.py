@@ -6,11 +6,13 @@ from werkzeug.exceptions import NotFound
 from models import storage
 from api.v1.views import app_views
 from os import getenv
+from flsk_cors import CORS
 
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
-
+app.url.map.strict_slashes = false
+cors = CORS(app, resources={"*": {"origins": "0.0.0.0"}})
 
 @app.errorhandler(404)
 def api_notfound(err):
