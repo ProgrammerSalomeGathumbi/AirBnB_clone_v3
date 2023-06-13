@@ -6,7 +6,7 @@ from werkzeug.exceptions import NotFound
 from models import storage
 from api.v1.views import app_views
 from os import getenv
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
